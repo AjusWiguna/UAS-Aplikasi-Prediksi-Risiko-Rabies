@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Risiko Rabies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #074906;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .high-risk {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .low-risk {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aplikasi Prediksi Risiko Rabies</h1>
+        <form id="predictionForm">
+            <label for="ghpr">Jumlah Kasus GHPR:</label>
+            <input type="number" id="ghpr" name="ghpr" required min="0">
+
+            <label for="kat3">Jumlah Gigitan Kategori III:</label>
+            <input type="number" id="kat3" name="kat3" required min="0">
+
+            <label for="var">Jumlah Vaksin VAR:</label>
+            <input type="number" id="var" name="var" required min="0">
+
+            <label for="sar">Jumlah Serum SAR:</label>
+            <input type="number" id="sar" name="sar" required min="0">
+
+            <label for="anjing">Jumlah Gigitan Anjing Pada Manusia:</label>
+            <input type="number" id="anjing" name="anjing" required min="0">
+
+            <button type="submit">Prediksi Risiko</button>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            
+            const result = Math.random() > 0.5 ? 'TINGGI' : 'RENDAH';
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `Risiko Rabies: ${result}`;
+            resultDiv.className = `result ${result === 'TINGGI' ? 'high-risk' : 'low-risk'}`;
+            resultDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
